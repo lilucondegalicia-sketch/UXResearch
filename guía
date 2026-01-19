@@ -1,5 +1,6 @@
 <!-- Chosen Palette: "Research Harmony" - Base: Stone-50 (Warm Neutral). Accents: Teal (Discovery), Indigo (Definition), Rose (Evaluation), Amber (Launch). Text: Stone-800. -->
 
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -126,25 +127,46 @@
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-32">
 
-        <!-- Detail Modal -->
+        <!-- Detail Modal (REFACTORED FOR BETTER POSITIONING) -->
         <div id="detail-overlay" class="fixed inset-0 bg-stone-900/50 z-50 hidden backdrop-blur-sm transition-opacity" onclick="hideDetail()"></div>
-        <div id="detail-modal" class="fixed inset-x-4 bottom-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-3xl bg-white rounded-2xl shadow-2xl border border-stone-200 p-0 z-50 hidden transition-all duration-300 scale-95 opacity-0">
-            <div class="px-8 py-6 border-b border-stone-100 flex items-start justify-between bg-stone-50/50 rounded-t-2xl">
+        
+        <!-- Modal Container: Fixed max-height, Flexbox layout -->
+        <div id="detail-modal" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-full max-w-3xl max-h-[85vh] bg-white rounded-2xl shadow-2xl border border-stone-200 z-50 hidden flex flex-col transition-all duration-300 scale-95 opacity-0">
+            
+            <!-- Header (Fixed at top of modal) -->
+            <div class="px-8 py-6 border-b border-stone-100 flex items-start justify-between bg-stone-50/50 rounded-t-2xl flex-shrink-0">
                 <div>
                     <span id="detail-tag" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-stone-100 text-stone-800 mb-3">Categoría</span>
                     <h3 id="detail-title" class="text-3xl font-extrabold text-stone-900">Título</h3>
                 </div>
-                <button onclick="hideDetail()" class="text-stone-400 hover:text-stone-600 hover:bg-stone-100 p-2 rounded-full"><span class="sr-only">Cerrar</span>✕</button>
+                <button onclick="hideDetail()" class="text-stone-400 hover:text-stone-600 hover:bg-stone-100 p-2 rounded-full transition-colors">
+                    <span class="sr-only">Cerrar</span>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
             </div>
-            <div class="px-8 py-6 max-h-[70vh] overflow-y-auto no-scrollbar">
+
+            <!-- Content Body (Scrollable Area) -->
+            <div class="px-8 py-6 overflow-y-auto flex-1 no-scrollbar">
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="md:col-span-2 space-y-6">
-                        <div><h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-2">¿Qué es?</h4><p id="detail-desc" class="text-stone-700 text-lg leading-relaxed">...</p></div>
-                        <div><h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-2">¿Cuándo usarlo?</h4><p id="detail-when" class="text-stone-600 leading-relaxed bg-amber-50 p-4 rounded-lg border border-amber-100 text-sm">...</p></div>
+                        <div>
+                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-2">¿Qué es?</h4>
+                            <p id="detail-desc" class="text-stone-700 text-lg leading-relaxed">...</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-2">¿Cuándo usarlo?</h4>
+                            <p id="detail-when" class="text-stone-600 leading-relaxed bg-amber-50 p-4 rounded-lg border border-amber-100 text-sm">...</p>
+                        </div>
                     </div>
                     <div class="space-y-6">
-                        <div class="bg-stone-50 rounded-xl p-5 border border-stone-100"><h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-3">Herramientas</h4><ul id="detail-tools" class="space-y-2 text-sm text-stone-600 font-medium"></ul></div>
-                        <div class="flex items-center justify-between bg-stone-50 rounded-xl p-5 border border-stone-100"><h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest">Esfuerzo</h4><span id="detail-effort" class="font-bold text-teal-600 bg-white px-3 py-1 rounded-md shadow-sm border border-stone-100">Bajo</span></div>
+                        <div class="bg-stone-50 rounded-xl p-5 border border-stone-100">
+                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-3">Herramientas</h4>
+                            <ul id="detail-tools" class="space-y-2 text-sm text-stone-600 font-medium"></ul>
+                        </div>
+                        <div class="flex items-center justify-between bg-stone-50 rounded-xl p-5 border border-stone-100">
+                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest">Esfuerzo</h4>
+                            <span id="detail-effort" class="font-bold text-teal-600 bg-white px-3 py-1 rounded-md shadow-sm border border-stone-100">Bajo</span>
+                        </div>
                     </div>
                 </div>
             </div>
