@@ -1,6 +1,5 @@
 <!-- Chosen Palette: "Research Harmony" - Base: Stone-50 (Warm Neutral). Accents: Teal (Discovery), Indigo (Definition), Rose (Evaluation), Amber (Launch). Text: Stone-800. -->
 
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -127,13 +126,10 @@
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-32">
 
-        <!-- Detail Modal (REFACTORED FOR BETTER POSITIONING) -->
+        <!-- Detail Modal (Fixed max-height, Flexbox layout) -->
         <div id="detail-overlay" class="fixed inset-0 bg-stone-900/50 z-50 hidden backdrop-blur-sm transition-opacity" onclick="hideDetail()"></div>
-        
-        <!-- Modal Container: Fixed max-height, Flexbox layout -->
         <div id="detail-modal" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-full max-w-3xl max-h-[85vh] bg-white rounded-2xl shadow-2xl border border-stone-200 z-50 hidden flex flex-col transition-all duration-300 scale-95 opacity-0">
-            
-            <!-- Header (Fixed at top of modal) -->
+            <!-- Header -->
             <div class="px-8 py-6 border-b border-stone-100 flex items-start justify-between bg-stone-50/50 rounded-t-2xl flex-shrink-0">
                 <div>
                     <span id="detail-tag" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-stone-100 text-stone-800 mb-3">Categoría</span>
@@ -144,27 +140,26 @@
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
             </div>
-
-            <!-- Content Body (Scrollable Area) -->
+            <!-- Content Body -->
             <div class="px-8 py-6 overflow-y-auto flex-1 no-scrollbar">
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="md:col-span-2 space-y-6">
                         <div>
-                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-2">¿Qué es?</h4>
+                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-2">¿En qué consiste?</h4>
                             <p id="detail-desc" class="text-stone-700 text-lg leading-relaxed">...</p>
                         </div>
                         <div>
-                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-2">¿Cuándo usarlo?</h4>
+                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-2">¿Cuándo te conviene usarlo?</h4>
                             <p id="detail-when" class="text-stone-600 leading-relaxed bg-amber-50 p-4 rounded-lg border border-amber-100 text-sm">...</p>
                         </div>
                     </div>
                     <div class="space-y-6">
                         <div class="bg-stone-50 rounded-xl p-5 border border-stone-100">
-                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-3">Herramientas</h4>
+                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-3">Herramientas Típicas</h4>
                             <ul id="detail-tools" class="space-y-2 text-sm text-stone-600 font-medium"></ul>
                         </div>
                         <div class="flex items-center justify-between bg-stone-50 rounded-xl p-5 border border-stone-100">
-                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest">Esfuerzo</h4>
+                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest">Esfuerzo Estimado</h4>
                             <span id="detail-effort" class="font-bold text-teal-600 bg-white px-3 py-1 rounded-md shadow-sm border border-stone-100">Bajo</span>
                         </div>
                     </div>
@@ -177,8 +172,8 @@
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-10">
                     <div class="inline-block p-3 rounded-2xl bg-teal-50 text-teal-600 mb-4 text-3xl">✨</div>
-                    <h2 class="text-3xl font-bold text-stone-900 mb-4">Selector de Metodologías</h2>
-                    <p class="text-stone-600 text-lg">Responde 3 preguntas y te recomendaremos los artefactos ideales, explicándote el "por qué".</p>
+                    <h2 class="text-3xl font-bold text-stone-900 mb-4">Asistente de Navegación</h2>
+                    <p class="text-stone-600 text-lg">Cuéntanos qué necesitas resolver hoy y te sugeriremos por dónde empezar.</p>
                 </div>
                 
                 <div class="bg-white rounded-3xl shadow-xl border border-stone-200 overflow-hidden flex flex-col md:flex-row min-h-[500px]">
@@ -189,14 +184,14 @@
                         
                         <!-- Question 1 -->
                         <div id="q1" class="wizard-step fade-in">
-                            <h3 class="text-2xl font-bold text-stone-900 mb-6">1. ¿Cuál es tu objetivo principal?</h3>
+                            <h3 class="text-2xl font-bold text-stone-900 mb-6">1. ¿Qué reto enfrentas ahora mismo?</h3>
                             <div class="grid grid-cols-1 gap-4">
                                 <button onclick="selectWizardOption('q1', 'explore')" class="wizard-option p-4 rounded-xl border-2 border-stone-200 text-left hover:border-teal-400 group">
                                     <div class="flex items-center gap-4">
                                         <span class="text-3xl bg-teal-50 p-2 rounded-lg group-hover:bg-teal-100 transition-colors">🔍</span>
                                         <div>
-                                            <span class="text-lg font-bold block text-stone-800">Explorar y Descubrir</span>
-                                            <span class="text-sm text-stone-500 block mt-1">"No sé qué solución construir aún. Quiero encontrar problemas u oportunidades."</span>
+                                            <span class="text-lg font-bold block text-stone-800">Descubrir y Entender</span>
+                                            <span class="text-sm text-stone-500 block mt-1">"Aún estoy definiendo cuál es el problema real."</span>
                                         </div>
                                     </div>
                                 </button>
@@ -204,8 +199,8 @@
                                     <div class="flex items-center gap-4">
                                         <span class="text-3xl bg-indigo-50 p-2 rounded-lg group-hover:bg-indigo-100 transition-colors">🏗️</span>
                                         <div>
-                                            <span class="text-lg font-bold block text-stone-800">Estructurar y Organizar</span>
-                                            <span class="text-sm text-stone-500 block mt-1">"Tengo el contenido, pero no sé cómo organizarlo para que el usuario lo entienda."</span>
+                                            <span class="text-lg font-bold block text-stone-800">Organizar Información</span>
+                                            <span class="text-sm text-stone-500 block mt-1">"Tengo mucho contenido y necesito ponerle orden."</span>
                                         </div>
                                     </div>
                                 </button>
@@ -213,8 +208,8 @@
                                     <div class="flex items-center gap-4">
                                         <span class="text-3xl bg-rose-50 p-2 rounded-lg group-hover:bg-rose-100 transition-colors">🧪</span>
                                         <div>
-                                            <span class="text-lg font-bold block text-stone-800">Validar y Evaluar</span>
-                                            <span class="text-sm text-stone-500 block mt-1">"Ya tengo un diseño (prototipo o real). Quiero saber si la gente puede usarlo."</span>
+                                            <span class="text-lg font-bold block text-stone-800">Evaluar Soluciones</span>
+                                            <span class="text-sm text-stone-500 block mt-1">"Ya tengo algo tangible (boceto o diseño) y quiero probarlo."</span>
                                         </div>
                                     </div>
                                 </button>
@@ -222,8 +217,8 @@
                                     <div class="flex items-center gap-4">
                                         <span class="text-3xl bg-amber-50 p-2 rounded-lg group-hover:bg-amber-100 transition-colors">🚀</span>
                                         <div>
-                                            <span class="text-lg font-bold block text-stone-800">Optimizar y Crecer</span>
-                                            <span class="text-sm text-stone-500 block mt-1">"El producto está en vivo. Quiero mejorar las ventas o reducir el abandono."</span>
+                                            <span class="text-lg font-bold block text-stone-800">Mejorar lo Existente</span>
+                                            <span class="text-sm text-stone-500 block mt-1">"El producto ya está vivo. Quiero que crezca o rinda mejor."</span>
                                         </div>
                                     </div>
                                 </button>
@@ -244,13 +239,13 @@
                         <!-- Results -->
                         <div id="wizard-results" class="wizard-step hidden fade-in">
                             <div class="mb-6">
-                                <h3 class="text-2xl font-bold text-stone-900">¡Métodos Recomendados!</h3>
-                                <p class="text-stone-500">Haz clic en cada tarjeta para ver los detalles.</p>
+                                <h3 class="text-2xl font-bold text-stone-900">Sugerencias para tu caso</h3>
+                                <p class="text-stone-500">Estos métodos suelen funcionar bien para tu objetivo. Úsalos como punto de partida.</p>
                             </div>
                             <div id="recommended-methods" class="grid gap-4 text-left"></div>
                             <div class="mt-8">
                                 <button onclick="resetWizard()" class="px-6 py-3 bg-stone-100 text-stone-600 rounded-full font-bold hover:bg-stone-200 transition-colors w-full">
-                                    🔄 Reiniciar Asistente
+                                    🔄 Probar con otro escenario
                                 </button>
                             </div>
                         </div>
@@ -259,21 +254,21 @@
                     <!-- Right: Educational Guide Sidebar -->
                     <div class="w-full md:w-1/3 bg-stone-50 border-t md:border-t-0 md:border-l border-stone-200 p-8 flex flex-col">
                         <div class="mb-4 flex items-center gap-2 text-stone-400 text-xs font-bold uppercase tracking-widest">
-                            <span class="text-lg">💡</span> Consejo de Investigación
+                            <span class="text-lg">💡</span> Tip de Experto
                         </div>
                         
                         <!-- Dynamic Tip Content -->
                         <div id="wizard-tip-content" class="flex-1">
                             <h4 class="text-xl font-bold text-stone-800 mb-3">Empieza con el "Por Qué"</h4>
                             <p class="text-stone-600 leading-relaxed text-sm mb-4">
-                                Según Erika Hall en <em>Just Enough Research</em>, el error número uno es investigar sin una pregunta clara.
+                                El error número uno es investigar sin una pregunta clara.
                             </p>
                             <p class="text-stone-600 leading-relaxed text-sm">
-                                No elijas un método porque está de moda. Elígelo porque es la forma más barata y rápida de responder a tu duda actual.
+                                No elijas un método solo porque está de moda. Elígelo porque es la forma más sencilla de responder a tu duda actual.
                             </p>
                             <div class="mt-6 bg-white p-4 rounded-lg border border-stone-200 shadow-sm">
-                                <strong class="block text-teal-600 text-xs uppercase mb-1">Regla de Oro</strong>
-                                <p class="text-stone-700 text-sm italic">"Observar lo que la gente hace es más fiable que escuchar lo que dicen que hacen."</p>
+                                <strong class="block text-teal-600 text-xs uppercase mb-1">Recuerda</strong>
+                                <p class="text-stone-700 text-sm italic">"Observar lo que la gente hace suele ser más fiable que escuchar lo que dicen."</p>
                             </div>
                         </div>
                     </div>
@@ -435,23 +430,23 @@
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <div class="inline-block p-3 rounded-2xl bg-stone-100 text-stone-600 mb-4 text-3xl">🧰</div>
                 <h2 class="text-3xl font-bold text-stone-900 mb-4">Caja de Herramientas</h2>
-                <p class="text-stone-500">Software específico mencionado en la documentación.</p>
+                <p class="text-stone-500">Estas plataformas son solo referencias populares. Elige las herramientas que mejor se ajusten a tu equipo y presupuesto.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm hover:shadow-md hover:border-teal-300 transition-all">
                     <div class="flex items-center justify-between mb-6"><h3 class="font-bold text-xl text-stone-900">Maze / Useberry</h3><span class="text-2xl bg-teal-50 p-2 rounded-lg">⚡</span></div>
-                    <p class="text-sm text-stone-600 mb-6">Plataformas todo-en-uno para pruebas no moderadas. Ideales para validar prototipos rápidamente.</p>
-                    <div class="text-xs text-stone-400 font-mono bg-stone-50 p-2 rounded">Guía Maze: Testing Rápido</div>
+                    <p class="text-sm text-stone-600 mb-6">Plataformas ágiles para pruebas no moderadas. Muy útiles para validar prototipos rápidamente.</p>
+                    <div class="text-xs text-stone-400 font-mono bg-stone-50 p-2 rounded">Para: Testing Rápido</div>
                 </div>
                 <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all">
                     <div class="flex items-center justify-between mb-6"><h3 class="font-bold text-xl text-stone-900">Optimal Workshop</h3><span class="text-2xl bg-indigo-50 p-2 rounded-lg">🌳</span></div>
-                    <p class="text-sm text-stone-600 mb-6">El estándar para arquitectura de información (Card Sorting y Tree Testing).</p>
-                    <div class="text-xs text-stone-400 font-mono bg-stone-50 p-2 rounded">Ideal para: Estructura</div>
+                    <p class="text-sm text-stone-600 mb-6">Especializadas en arquitectura de información (cómo organizas tu contenido).</p>
+                    <div class="text-xs text-stone-400 font-mono bg-stone-50 p-2 rounded">Para: Estructura / Menús</div>
                 </div>
                 <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm hover:shadow-md hover:border-rose-300 transition-all">
                     <div class="flex items-center justify-between mb-6"><h3 class="font-bold text-xl text-stone-900">Hotjar / Analytics</h3><span class="text-2xl bg-rose-50 p-2 rounded-lg">🔥</span></div>
-                    <p class="text-sm text-stone-600 mb-6">Mapas de calor y grabaciones de sesión para ver la realidad en producción.</p>
-                    <div class="text-xs text-stone-400 font-mono bg-stone-50 p-2 rounded">Ideal para: Análisis Cuantitativo</div>
+                    <p class="text-sm text-stone-600 mb-6">Te permiten ver la realidad (mapas de calor, grabaciones) cuando el producto ya está en vivo.</p>
+                    <div class="text-xs text-stone-400 font-mono bg-stone-50 p-2 rounded">Para: Análisis Cuantitativo</div>
                 </div>
             </div>
         </section>
@@ -470,24 +465,24 @@
         // --- Data Source ---
         const methodsData = [
             // Existing
-            { id: 'netnografia', name: 'Netnografía', phase: 'descubrimiento', type: 'Qual', axisX: -8, axisY: -4, effort: 'Alto', desc: 'Bucear en foros y redes sociales para comprender dinámicas sociales y lenguaje natural. (Fuente: Artefactos de Inv. PDF).', when: 'Etapa Temprana: Entender contexto cultural.', tools: ['Redes Sociales', 'Foros'] },
-            { id: 'entrevistas', name: 'Entrevistas 1-a-1', phase: 'descubrimiento', type: 'Qual', axisX: -9, axisY: -6, effort: 'Medio', desc: 'Conversaciones profundas para entender dolores y motivaciones.', when: 'Etapa Temprana: Empatizar con el usuario.', tools: ['Zoom', 'Grabadora'] },
-            { id: 'shadowing', name: 'Shadowing', phase: 'descubrimiento', type: 'Qual', axisX: -7, axisY: 9, effort: 'Alto', desc: 'Observar al usuario en su entorno real sin intervenir.', when: 'Etapa Temprana: Entender contexto físico.', tools: ['Cámara'] },
-            { id: 'benchmark', name: 'Benchmark', phase: 'descubrimiento', type: 'Mix', axisX: 2, axisY: 5, effort: 'Bajo', desc: 'Análisis comparativo de la competencia.', when: 'Etapa Temprana: Identificar estándares.', tools: ['Navegador', 'Excel'] },
-            { id: 'encuestas', name: 'Encuestas', phase: 'descubrimiento', type: 'Quant', axisX: 4, axisY: 3, effort: 'Bajo', desc: 'Recoger información estructurada masiva (NPS, CSAT).', when: 'Etapa Avanzada: Medir satisfacción.', tools: ['Typeform'] },
-            { id: 'cardsorting', name: 'Card Sorting', phase: 'definicion', type: 'Mix', axisX: -3, axisY: -2, effort: 'Medio', desc: 'Usuarios agrupan temas para crear arquitectura.', when: 'Etapa Intermedia: Diseñar menús.', tools: ['Optimal Workshop'] },
-            { id: 'treetesting', name: 'Tree Testing', phase: 'diseno', type: 'Quant', axisX: 6, axisY: 7, effort: 'Bajo', desc: 'Evalúa la encontrabilidad en un menú sin diseño.', when: 'Etapa Intermedia: Validar IA.', tools: ['Optimal Workshop'] },
-            { id: 'firstclick', name: 'First Click', phase: 'diseno', type: 'Quant', axisX: 7, axisY: 8, effort: 'Bajo', desc: 'Mide dónde hacen el primer clic.', when: 'Etapa Intermedia: Validar navegación.', tools: ['Maze'] },
-            { id: 'usability_mod', name: 'Pruebas Moderadas', phase: 'diseno', type: 'Qual', axisX: -8, axisY: 8, effort: 'Alto', desc: 'Sesiones guiadas con observación directa.', when: 'Etapa Intermedia: Flujos complejos.', tools: ['Zoom'] },
-            { id: 'usability_unmod', name: 'Pruebas No Moderadas', phase: 'diseno', type: 'Quant', axisX: 5, axisY: 8, effort: 'Medio', desc: 'Usuarios realizan tareas solos.', when: 'Etapa Intermedia/Avanzada: Escalar testing.', tools: ['Maze'] },
-            { id: '5second', name: '5-Second Test', phase: 'diseno', type: 'Quant', axisX: 6, axisY: -3, effort: 'Bajo', desc: 'Impresión en 5 seg.', when: 'Etapa Intermedia: Landing Pages.', tools: ['UsabilityHub'] },
-            { id: 'analytics', name: 'Analítica Web', phase: 'lanzamiento', type: 'Quant', axisX: 10, axisY: 10, effort: 'Medio', desc: 'Análisis de datos masivos de uso real.', when: 'Etapa Avanzada: Optimización continua.', tools: ['GA4', 'Hotjar'] },
-            { id: 'abtesting', name: 'A/B Testing', phase: 'lanzamiento', type: 'Quant', axisX: 9, axisY: 9, effort: 'Medio', desc: 'Comparar versiones con tráfico real.', when: 'Etapa Avanzada: CRO.', tools: ['VWO'] },
+            { id: 'netnografia', name: 'Netnografía', phase: 'descubrimiento', type: 'Qual', axisX: -8, axisY: -4, effort: 'Alto', desc: 'Bucear en foros y redes sociales para comprender dinámicas sociales y lenguaje natural.', when: 'Etapa Temprana: Para entender la cultura de tus usuarios.', tools: ['Redes Sociales', 'Foros'] },
+            { id: 'entrevistas', name: 'Entrevistas 1-a-1', phase: 'descubrimiento', type: 'Qual', axisX: -9, axisY: -6, effort: 'Medio', desc: 'Conversaciones profundas para entender dolores y motivaciones reales.', when: 'Etapa Temprana: Para empatizar profundamente.', tools: ['Zoom', 'Grabadora'] },
+            { id: 'shadowing', name: 'Shadowing', phase: 'descubrimiento', type: 'Qual', axisX: -7, axisY: 9, effort: 'Alto', desc: 'Observar al usuario en su entorno real (oficina, casa) sin intervenir.', when: 'Etapa Temprana: Para ver el contexto físico real.', tools: ['Cámara'] },
+            { id: 'benchmark', name: 'Benchmark', phase: 'descubrimiento', type: 'Mix', axisX: 2, axisY: 5, effort: 'Bajo', desc: 'Análisis comparativo de la competencia para no reinventar la rueda.', when: 'Etapa Temprana: Para identificar estándares del sector.', tools: ['Navegador', 'Excel'] },
+            { id: 'encuestas', name: 'Encuestas', phase: 'descubrimiento', type: 'Quant', axisX: 4, axisY: 3, effort: 'Bajo', desc: 'Recoger información estructurada de muchas personas (NPS, CSAT).', when: 'Etapa Avanzada: Para medir satisfacción a escala.', tools: ['Typeform'] },
+            { id: 'cardsorting', name: 'Card Sorting', phase: 'definicion', type: 'Mix', axisX: -3, axisY: -2, effort: 'Medio', desc: 'Pide a los usuarios que agrupen temas. Revela cómo organizan la info en su mente.', when: 'Etapa Intermedia: Para diseñar menús intuitivos.', tools: ['Optimal Workshop'] },
+            { id: 'treetesting', name: 'Tree Testing', phase: 'diseno', type: 'Quant', axisX: 6, axisY: 7, effort: 'Bajo', desc: 'Evalúa si encuentran algo en tu menú (sin diseño visual).', when: 'Etapa Intermedia: Para validar tu arquitectura de información.', tools: ['Optimal Workshop'] },
+            { id: 'firstclick', name: 'First Click', phase: 'diseno', type: 'Quant', axisX: 7, axisY: 8, effort: 'Bajo', desc: 'Mide dónde hacen el primer clic los usuarios para completar una tarea.', when: 'Etapa Intermedia: Para validar si la navegación es clara.', tools: ['Maze'] },
+            { id: 'usability_mod', name: 'Pruebas Moderadas', phase: 'diseno', type: 'Qual', axisX: -8, axisY: 8, effort: 'Alto', desc: 'Sesiones guiadas donde observas y preguntas. Ideales para entender "por qué" fallan.', when: 'Etapa Intermedia: Para flujos complejos o nuevos.', tools: ['Zoom'] },
+            { id: 'usability_unmod', name: 'Pruebas No Moderadas', phase: 'diseno', type: 'Quant', axisX: 5, axisY: 8, effort: 'Medio', desc: 'Usuarios realizan tareas solos. Rápido y escalable.', when: 'Etapa Intermedia/Avanzada: Para validar usabilidad rápidamente.', tools: ['Maze'] },
+            { id: '5second', name: '5-Second Test', phase: 'diseno', type: 'Quant', axisX: 6, axisY: -3, effort: 'Bajo', desc: 'Muestra un diseño 5 segundos y pregunta qué recuerdan.', when: 'Etapa Intermedia: Para evaluar la claridad de una Landing Page.', tools: ['UsabilityHub'] },
+            { id: 'analytics', name: 'Analítica Web', phase: 'lanzamiento', type: 'Quant', axisX: 10, axisY: 10, effort: 'Medio', desc: 'Análisis de datos masivos de uso real (visitas, rebote, flujo).', when: 'Etapa Avanzada: Para optimización continua.', tools: ['GA4', 'Hotjar'] },
+            { id: 'abtesting', name: 'A/B Testing', phase: 'lanzamiento', type: 'Quant', axisX: 9, axisY: 9, effort: 'Medio', desc: 'Comparar dos versiones con tráfico real para ver cuál vende más.', when: 'Etapa Avanzada: Para mejorar conversión (CRO).', tools: ['VWO'] },
             
             // New Added Methods
-            { id: 'eyetracking', name: 'Eye Tracking', phase: 'lanzamiento', type: 'Quant', axisX: 9, axisY: 7, effort: 'Alto', desc: 'Registra dónde mira el usuario (fijaciones y sacadas). Revela la jerarquía visual real.', when: 'Optimización: Validar atención en elementos clave.', tools: ['Tobii', 'Hotjar'] },
-            { id: 'mysteryshopper', name: 'Mystery Shopper', phase: 'descubrimiento', type: 'Qual', axisX: 8, axisY: -6, effort: 'Medio', desc: 'Investigador actúa como cliente para evaluar la calidad del servicio en puntos de contacto reales.', when: 'Exploración: Evaluar servicio al cliente y omnicanalidad.', tools: ['Guion', 'Cámara oculta'] },
-            { id: 'heuristica', name: 'Evaluación Heurística', phase: 'definicion', type: 'Qual', axisX: 1, axisY: 4, effort: 'Bajo', desc: 'Expertos evalúan la interfaz contra principios de usabilidad (ej. Nielsen). Rápido y barato.', when: 'Validación: Limpieza rápida antes de testear con usuarios.', tools: ['Nielsen Heuristics'] }
+            { id: 'eyetracking', name: 'Eye Tracking', phase: 'lanzamiento', type: 'Quant', axisX: 9, axisY: 7, effort: 'Alto', desc: 'Registra dónde mira el usuario (fijaciones). Revela la jerarquía visual real.', when: 'Optimización: Para validar si ven los elementos clave.', tools: ['Tobii', 'Hotjar'] },
+            { id: 'mysteryshopper', name: 'Mystery Shopper', phase: 'descubrimiento', type: 'Qual', axisX: 8, axisY: -6, effort: 'Medio', desc: 'Investigador actúa como cliente para evaluar la calidad del servicio.', when: 'Exploración: Para evaluar la experiencia omnicanal.', tools: ['Guion', 'Cámara oculta'] },
+            { id: 'heuristica', name: 'Evaluación Heurística', phase: 'definicion', type: 'Qual', axisX: 1, axisY: 4, effort: 'Bajo', desc: 'Expertos revisan la interfaz contra principios de usabilidad (ej. Nielsen).', when: 'Validación: Limpieza rápida antes de testear con usuarios.', tools: ['Nielsen Heuristics'] }
         ];
 
         // --- Core Logic ---
@@ -517,58 +512,58 @@
         const adviceDictionary = {
             'initial': {
                 title: 'Empieza con el "Por Qué"',
-                text: 'Según Erika Hall en <em>Just Enough Research</em>, el error número uno es investigar sin una pregunta clara. No elijas un método porque está de moda; elígelo porque responde tu duda actual.',
+                text: 'El error número uno es investigar sin una pregunta clara. No elijas un método porque está de moda; elígelo porque responde tu duda actual de la forma más sencilla.',
                 quote: '"Observar lo que la gente hace es más fiable que escuchar lo que dicen que hacen."'
             },
             'explore': {
                 title: 'Fase Generativa',
-                text: 'En esta etapa <strong>no estamos validando nada</strong>. Estamos buscando patrones y modelos mentales. Si preguntas "¿Te gusta esto?", obtendrás mentiras piadosas. Mejor pregunta: "¿Cómo solucionas esto hoy?".',
-                quote: 'Universal Methods: "Lo que la gente dice y lo que hace son cosas muy diferentes."'
+                text: 'En esta etapa <strong>no estamos validando nada</strong>. Estamos buscando inspiración y patrones. Si preguntas "¿Te gusta esto?", te mentirán para ser amables. Mejor pregunta: "¿Cómo solucionas este problema hoy?".',
+                quote: '"Lo que la gente dice y lo que hace suelen ser cosas muy diferentes."'
             },
             'structure': {
                 title: 'Arquitectura de Información',
-                text: 'La estructura de tu sitio debe coincidir con el modelo mental de tus usuarios, no con tu organigrama. El <strong>Card Sorting</strong> revela cómo piensan ellos; el <strong>Tree Test</strong> valida si lo encuentran.',
-                quote: 'Maze Guide: "Si no pueden encontrarlo, no existe."'
+                text: 'La estructura de tu sitio debe coincidir con cómo piensa el usuario, no con el organigrama de tu empresa. El <strong>Card Sorting</strong> te muestra sus mapas mentales.',
+                quote: '"Si el usuario no puede encontrarlo, no existe."'
             },
             'validate': {
                 title: 'Evaluación Formativa',
-                text: 'No necesitas 100 usuarios. Según Jakob Nielsen, con <strong>5 usuarios</strong> descubres el 85% de los problemas de usabilidad. Lo importante es iterar rápido, no obtener significancia estadística todavía.',
-                quote: 'Rubin: "El objetivo es mejorar el diseño, no probar que eres perfecto."'
+                text: 'No necesitas 100 usuarios. Con <strong>5 usuarios</strong> sueles descubrir el 85% de los problemas graves. Lo importante es iterar rápido, no hacer un estudio científico perfecto.',
+                quote: '"El objetivo es mejorar el diseño, no probar que eres perfecto."'
             },
             'optimize': {
                 title: 'Evaluación Sumativa',
-                text: 'Aquí ya importa la estadística. El producto está vivo. Usa datos cuantitativos (Analytics, A/B) para saber <em>qué</em> pasa, y cualitativos (Encuestas, Heatmaps) para entender <em>por qué</em> pasa.',
-                quote: 'Pro Tip: Una mejora del 1% en conversión puede valer millones.'
+                text: 'Aquí sí importan los números. El producto está vivo. Usa datos (Analytics, A/B) para saber <em>qué</em> pasa, y cualitativos (Encuestas) para entender <em>por qué</em>.',
+                quote: '"Una mejora del 1% en conversión puede tener un gran impacto."'
             },
             'context': {
                 title: 'El Contexto es Rey',
-                text: 'La gente no usa tu app en el vacío. La usan mientras corren al autobús o sostienen un bebé. El <strong>Shadowing</strong> o el <strong>Mystery Shopper</strong> te muestran esas interrupciones reales que el laboratorio esconde.',
-                quote: 'Just Enough Research: "Sal del edificio."'
+                text: 'La gente no usa tu app en el vacío. La usan mientras corren al autobús o sostienen un bebé. Métodos como el <strong>Shadowing</strong> te muestran esa realidad desordenada.',
+                quote: '"Sal de la oficina y observa el mundo real."'
             },
             'talk': {
                 title: 'El Arte de Preguntar',
-                text: 'En las <strong>entrevistas</strong>, evita preguntas hipotéticas ("¿Usarías esto?"). Céntrate en comportamientos pasados ("Cuéntame la última vez que intentaste..."). El pasado predice el futuro mejor que la imaginación.',
-                quote: 'Regla: Escucha el 80% del tiempo, habla el 20%.'
+                text: 'En las <strong>entrevistas</strong>, evita preguntar sobre el futuro ("¿Usarías esto?"). Pregunta sobre el pasado ("Cuéntame la última vez que..."). El comportamiento pasado predice el futuro.',
+                quote: '"Escucha el 80% del tiempo, habla el 20%."'
             },
             'create_struct': {
                 title: 'Card Sorting Abierto',
-                text: 'Deja que los usuarios creen los nombres de las categorías. Descubrirás que su vocabulario es diferente al tuyo. Es una herramienta poderosa para definir la nomenclatura.',
-                quote: 'Consejo: No corrijas al usuario. Si agrupan "Tomates" en "Frutas", hay una razón.'
+                text: 'Deja que los usuarios creen los nombres de las categorías. Descubrirás que su vocabulario es diferente al tuyo. Es vital para que los menús sean intuitivos.',
+                quote: '"No corrijas al usuario. Si agrupan Tomates en Frutas, hay una razón."'
             },
             'validate_struct': {
-                title: 'Tree Testing (Reverse Card Sorting)',
-                text: 'Es la única forma de aislar la navegación del diseño visual. Si fallan aquí, ningún diseño bonito salvará tu menú. Es barato y rápido.',
-                quote: 'Métrica Clave: Tasa de éxito directo (sin ir y venir).'
+                title: 'Tree Testing',
+                text: 'Es la única forma de saber si tu menú funciona sin que el diseño visual interfiera. Si fallan aquí, ningún diseño bonito salvará la navegación.',
+                quote: 'Métrica Clave: ¿Pudieron encontrarlo sin dar vueltas?'
             },
             'why_fail': {
                 title: 'Pruebas Moderadas',
-                text: 'Son caras en tiempo pero ricas en insights. El valor no está en ver si completan la tarea, sino en escuchar su monólogo interior (Think Aloud) mientras luchan con ella.',
-                quote: 'Handbook of Usability Testing: "El facilitador debe ser invisible pero empático."'
+                text: 'Son costosas en tiempo pero oro puro en aprendizaje. El valor no es ver si completan la tarea, sino escucharles pensar en voz alta mientras intentan hacerlo.',
+                quote: '"El facilitador debe ser invisible pero empático."'
             },
             'how_many': {
                 title: 'Pruebas No Moderadas',
-                text: 'Herramientas como <strong>Maze</strong> brillan aquí. Puedes probar con 50 personas en un día. Ideal para calcular tasas de éxito y tiempos de tarea (Time on Task) con precisión.',
-                quote: 'Maze Guide: "Continuous Discovery significa testear cada semana."'
+                text: 'Herramientas automáticas te permiten probar con 50 personas en una tarde. Son ideales para medir tiempos y tasas de éxito cuando ya confías en el diseño general.',
+                quote: '"Testear cada semana es mejor que un gran test al final."'
             }
         };
 
@@ -583,7 +578,7 @@
                     <h4 class="text-xl font-bold text-stone-800 mb-3">${data.title}</h4>
                     <p class="text-stone-600 leading-relaxed text-sm mb-4">${data.text}</p>
                     <div class="mt-6 bg-white p-4 rounded-lg border border-stone-200 shadow-sm">
-                        <strong class="block text-teal-600 text-xs uppercase mb-1">Regla de Oro</strong>
+                        <strong class="block text-teal-600 text-xs uppercase mb-1">Recuerda</strong>
                         <p class="text-stone-700 text-sm italic">${data.quote}</p>
                     </div>
                 `;
@@ -619,13 +614,13 @@
 
             if (val === 'explore') { 
                 title.innerText = '¿Qué necesitas entender mejor?'; 
-                html = `<button onclick="selectWizardOption('q2', 'context')" class="wizard-option p-4 rounded-xl border-2 border-stone-200 text-left hover:border-teal-400 group flex items-center gap-4"><span class="text-3xl">🌍</span><div><strong class="block text-stone-800">El Contexto (Observar)</strong><span class="text-sm text-stone-500">Ver realidad física y entorno.</span></div></button>
-                        <button onclick="selectWizardOption('q2', 'talk')" class="wizard-option p-4 rounded-xl border-2 border-stone-200 text-left hover:border-teal-400 group flex items-center gap-4"><span class="text-3xl">🗣️</span><div><strong class="block text-stone-800">La Mentalidad (Hablar)</strong><span class="text-sm text-stone-500">Entender creencias y deseos.</span></div></button>`; 
+                html = `<button onclick="selectWizardOption('q2', 'context')" class="wizard-option p-4 rounded-xl border-2 border-stone-200 text-left hover:border-teal-400 group flex items-center gap-4"><span class="text-3xl">🌍</span><div><strong class="block text-stone-800">El Entorno (Contexto)</strong><span class="text-sm text-stone-500">Ver realidad física y entorno.</span></div></button>
+                        <button onclick="selectWizardOption('q2', 'talk')" class="wizard-option p-4 rounded-xl border-2 border-stone-200 text-left hover:border-teal-400 group flex items-center gap-4"><span class="text-3xl">🗣️</span><div><strong class="block text-stone-800">La Persona (Mentalidad)</strong><span class="text-sm text-stone-500">Entender creencias y deseos.</span></div></button>`; 
             }
             else if (val === 'structure') { 
                 title.innerText = '¿En qué punto estás?'; 
-                html = `<button onclick="selectWizardOption('q2', 'create_struct')" class="wizard-option p-4 rounded-xl border-2 border-stone-200 text-left hover:border-indigo-400 group flex items-center gap-4"><span class="text-3xl">✨</span><div><strong class="block text-stone-800">Creando desde cero</strong><span class="text-sm text-stone-500">Necesito agrupar el caos.</span></div></button>
-                        <button onclick="selectWizardOption('q2', 'validate_struct')" class="wizard-option p-4 rounded-xl border-2 border-stone-200 text-left hover:border-indigo-400 group flex items-center gap-4"><span class="text-3xl">✅</span><div><strong class="block text-stone-800">Validando un menú</strong><span class="text-sm text-stone-500">Quiero ver si encuentran las cosas.</span></div></button>`; 
+                html = `<button onclick="selectWizardOption('q2', 'create_struct')" class="wizard-option p-4 rounded-xl border-2 border-stone-200 text-left hover:border-indigo-400 group flex items-center gap-4"><span class="text-3xl">✨</span><div><strong class="block text-stone-800">Creando Estructura</strong><span class="text-sm text-stone-500">Necesito agrupar el caos.</span></div></button>
+                        <button onclick="selectWizardOption('q2', 'validate_struct')" class="wizard-option p-4 rounded-xl border-2 border-stone-200 text-left hover:border-indigo-400 group flex items-center gap-4"><span class="text-3xl">✅</span><div><strong class="block text-stone-800">Probando Estructura</strong><span class="text-sm text-stone-500">Quiero ver si encuentran las cosas.</span></div></button>`; 
             }
             else if (val === 'validate') { 
                 title.innerText = '¿Qué es más crítico ahora?'; 
